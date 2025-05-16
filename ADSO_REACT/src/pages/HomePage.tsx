@@ -14,12 +14,12 @@ const HomePage = () => {
         </Typography>
         <Typography variant="body1" paragraph>
           Bienvenido al sistema de gestión del SENA para el programa de Análisis y Desarrollo de Software (ADSO).
-          Esta plataforma le permite administrar aprendices, instructores, programas y fichas.
+          Esta plataforma le permite administrar aprendices, instructores y programas formativos.
         </Typography>
       </Paper>
 
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={4}>
           <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', transition: '0.3s', '&:hover': { transform: 'translateY(-5px)', boxShadow: 6 } }}>
             <CardMedia
               component="img"
@@ -49,7 +49,7 @@ const HomePage = () => {
           </Card>
         </Grid>
         
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={4}>
           <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', transition: '0.3s', '&:hover': { transform: 'translateY(-5px)', boxShadow: 6 } }}>
             <CardMedia
               component="img"
@@ -79,7 +79,7 @@ const HomePage = () => {
           </Card>
         </Grid>
         
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={4}>
           <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', transition: '0.3s', '&:hover': { transform: 'translateY(-5px)', boxShadow: 6 } }}>
             <CardMedia
               component="img"
@@ -104,36 +104,6 @@ const HomePage = () => {
                 fullWidth
               >
                 Ver Programas
-              </Button>
-            </CardContent>
-          </Card>
-        </Grid>
-        
-        <Grid item xs={12} md={6}>
-          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', transition: '0.3s', '&:hover': { transform: 'translateY(-5px)', boxShadow: 6 } }}>
-            <CardMedia
-              component="img"
-              height="200"
-              image="https://www.sena.edu.co/es-co/Noticias/NoticiasImg/noticias/Ficha-SENA.jpg"
-              alt="Fichas SENA"
-            />
-            <CardContent sx={{ flexGrow: 1 }}>
-              <Typography gutterBottom variant="h5" component="div" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <DescriptionIcon color="primary" /> Fichas
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Administre las fichas de los grupos de aprendices.
-                Gestione las asignaciones, horarios y seguimiento.
-              </Typography>
-              <Button 
-                component={Link}
-                to="/fichas"
-                variant="contained" 
-                color="primary" 
-                sx={{ mt: 2 }}
-                fullWidth
-              >
-                Ver Fichas
               </Button>
             </CardContent>
           </Card>
