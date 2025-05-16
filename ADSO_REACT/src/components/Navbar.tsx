@@ -14,6 +14,9 @@ import MenuItem from '@mui/material/MenuItem';
 import SchoolIcon from '@mui/icons-material/School';
 import { Link } from 'react-router-dom';
 
+// Import the SENA logo image
+import senaLogo from '../assets/images/penguin.jpg'; // Update this path if needed
+
 const pages = [
   { name: 'Inicio', route: '/' },
   { name: 'Aprendices', route: '/aprendices' },
@@ -142,7 +145,16 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Abrir configuración">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Usuario" src="/static/images/avatar/2.jpg" />
+                {/* Use an actual image instead of the default Avatar */}
+                <Avatar 
+                  alt="Usuario" 
+                  src={senaLogo} 
+                  sx={{ 
+                    width: 40, 
+                    height: 40,
+                    border: '2px solid white',
+                  }}
+                />
               </IconButton>
             </Tooltip>
             <Menu
