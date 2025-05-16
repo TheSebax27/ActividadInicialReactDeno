@@ -1,58 +1,65 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import confetti from 'canvas-confetti';
-import { useEffect, useState } from "react";
-import ComponenteGrid from "./components/gridPrincipal";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
+import AprendicesPage from './pages/AprendicesPage';
+import InstructoresPage from './pages/InstructoresPage';
+import ProgramasPage from './pages/ProgramasPage';
 
+// Creamos un tema personalizado con colores del SENA
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#43a047', // Verde SENA
+    },
+    secondary: {
+      main: '#f57c00', // Naranja complementario
+    },
+    background: {
+      default: '#f8f9fa',
+    },
+  },
+  typography: {
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    h4: {
+      fontWeight: 600,
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 12,
+        },
+      },
+    },
+  },
+});
 
 function App() {
-
-  const [count, setCount] = useState(0);
-  const [listaAprendices, setListaAprendices] = useState([]);
-
-  useEffect(() => {
-
-    if (count == 6) {
-      confetti();
-      setCount(0);
-    }
-
-  }, [count])
-
-  useEffect(() => {
-    fetch('http://localhost:8000/aprendices', {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      }
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        setListaAprendices(response);
-      })
-      .catch((error) =>
-        console.log("error al traer datos", error)
-      )
-  }, [])
-
   return (
-    <>
-      <Box sx={{ flexGrow: 1 }}>
-        <Button variant="contained" onClick={() => { setCount(count + 1) }}>Aceptar</Button>
-      </Box>
-      <br />
-      <h1>{count}</h1>
-
-      <ComponenteGrid />
-
-<div>
-  <h3>
-    {JSON.stringify(listaAprendices)}
-  </h3>
-</div>
-    </>
-  )
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/aprendices" element={<AprendicesPage />} />
+          <Route path="/instructores" element={<InstructoresPage />} />
+          <Route path="/programas" element={<ProgramasPage />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
